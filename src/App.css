@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,52 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: #000;
 }
+
+html{
+  scroll-behavior: smooth;
+}
+
+.burger-icon{
+  display: none;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 1rem;
+}
+
+.text-shadow{
+  text-shadow: 2px 2px 1px black;
+}
+
+.text-shadow-white{
+  text-shadow: 2px 2px 1px white;
+}
+
+.custom_drop{
+  display: none;  
+  margin-top: -300px;
+  transition: all 0.5s ease-in-out;
+} 
+
+.custom_bg{
+  background-color: #000;
+  z-index: 10;
+}
+
+.custom_responsive{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  /* grid-gap: 1rem; */
+  row-gap: 3rem;
+  column-gap: -80px;
+}
+
