@@ -1,13 +1,22 @@
 import axios from "axios";
 
-const BASR_URL = "http://localhost:8080/api/v1/todos";
+const BASE_URL = "http://localhost:8080/api/v1/todos";
 
 class TasKServices{
 
     addTask(todo){
-        return axios.post(BASR_URL, todo);
+        return axios.post(BASE_URL, todo);
     }
+
+    getAllTasks(){
+        return axios.get(BASE_URL)
+    }
+
+    deleteTask(id){
+        return axios.delete(BASE_URL + "/" + id);
+    }
+
 
 }
 
-export default new TasKServices();
+export default new TasKServices();      

@@ -1,41 +1,82 @@
 import React, { useState } from 'react'
-// import { useNavigate } from 'react-router-dom';
-import TaskServices from '../services/TaskServices'
+
+import TaskServices from '../services/TaskServices';
+import { useNavigate } from 'react-router-dom';
 
 const AddTask = () => {
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  const [newtask, setTask] = useState({
-    task: ""
+  const[todo, setTodo] = useState({
+    id: "",
+    taskDescription:"",
+    taskType:"",
   })
 
+  // function to handle change
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setTodo({...todo, [e.target.name]:value});
+  };
+
+  // function to save task
   const saveTask = (e) => {
     e.preventDefault();
-    TaskServices.addTask(newtask).then((response)=> {
+    TaskServices.addTask(todo).then((response) => {
+      navigate("/");
       console.log(response);
     }).catch((err)=>{
       console.log(err);
+    })
+  };
+
+
+  // Function to clear the fields
+  const reset = (e) => {
+    e.preventDefault();
+    setTodo({
+      taskDescription:"",
+      taskType:"",
     });
   }
 
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setTask({...newtask, [e.target.value]: value})
-  }
-
   return (
-    <div className='flex flex-col items-center justify-center px-5 py-10'>
-        <div className='bg-white px-5 py-8 flex flex-col w-[450px] border rounded-md shadow-sm'>
-            <h1 className='text-3xl font-extrabold pb-4 text-center'> Add Task </h1>
-
-            <label className='text-xl pb-3'>Enter To-do</label>
-            <input name='task' type='text' value={newtask.task} onChange={(e) => handleChange(e)} placeholder='Enter To-do' className='p-3 border' />
-
-            <button onClick={saveTask} className='p-3 mt-6 bg-teal-600 text-white rounded-md font-bold hover:bg-teal-700'>Add To-do</button>
-            <button className='p-3 mt-6 bg-red-600 text-white rounded-md font-bold hover:bg-red-800'>Clear Task</button>
-
+    <div className='flex w-fit mx-auto mt-[3.5rem] shadow-md rounded bg-gray-300'>
+      <div className='px-8 py-8'>
+        <div className='font-thin text-xl tracking-wider'>
+          <h1>Add a To-do</h1>
         </div>
+        <div className='items-center justify-center mb-5 w-full'>
+          
+          <label className='block text-gray-600 pt-5 mb-2 font-thin'>Task Description</label>
+          <input 
+            name='taskDescription' 
+            value={todo.taskDescription}
+            onChange={(e)=> handleChange(e)} 
+            placeholder='Enter To-do' type='text' 
+            className='h-10 w-96 px-2 py-2'
+            required 
+          />
+
+          <label className='block text-gray-600 pt-5 mb-2 font-thin'>Task Type</label>
+          <input 
+            name='taskType' 
+            value={todo.taskType} 
+            onChange={(e)=> handleChange(e)}
+            placeholder='e.g. Programming, Course, Meetings' 
+            type='text' 
+            className='h-10 w-96 px-2 py-2' 
+            required
+          />
+          
+        </div>
+
+        <div className='items-center justify-center w-full space-x-4'>
+          <button onClick={saveTask} className='rounded text-white bg-teal-700 px-3 py-3 tracking-wider shadow hover:bg-teal-800'>Add To-do</button>
+          <button onClick={reset} className='rounded text-white bg-red-700 px-3 py-3 tracking-wider shadow hover:bg-red-800'>Clear To-do</button>
+        </div>
+
+      </div>
     </div>
   )
 }
