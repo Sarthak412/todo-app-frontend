@@ -4,6 +4,7 @@ import AddTask from './components/AddTask';
 // import AddTask from './components/AddTask';
 import Navbar from './components/Navbar';
 import TaskList from './components/TaskList';
+import UpdateTask from './components/UpdateTask';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path='/' element={<TaskList/>} />
           <Route path='/taskList' element={<TaskList/>} />
           <Route path='/addTask' element={<AddTask/>} />
+          <Route path='/editTask/:id' element={<UpdateTask/>} />
         </Routes>
       
       </BrowserRouter>
@@ -27,13 +29,3 @@ function App() {
 }
 
 export default App;
-
-
-      {/* <BrowserRouter> */}
-{/* 
-        <Routes>
-          <Route path='/' element={<TaskList/>} />
-          <Route path='/createTodo' element={ <AddTask/> } />
-        </Routes>
-
-      </BrowserRouter> */}

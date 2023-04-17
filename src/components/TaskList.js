@@ -41,11 +41,11 @@ const TaskList = () => {
   return (
     <div className='text-left container mx-8 my-8'>
         <div className='h-12'>
-            <button onClick={()=> navigate("/addTask")} className='bg-teal-600 w-[200px] rounded shadow text-lg hover:bg-teal-800 text-white p-3'> Add To-do </button>
+            <button onClick={()=> navigate("/addTask")} className='bg-teal-600 w-[200px] rounded shadow text-lg mx-[3rem] hover:bg-teal-800 text-white p-3'> Add To-do </button>
         </div>
         
         {/* Task Table  */}
-        <div className='flex shadow border-b mt-[2rem] w-[1200px]'>
+        <div className='flex mx-[3rem] shadow border-b mt-[2rem] w-full'>
             <table className='min-w-full'>
                 <thead className='bg-teal-200'>
                     <tr>

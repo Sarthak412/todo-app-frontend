@@ -16,7 +16,15 @@ class TasKServices{
         return axios.delete(BASE_URL + "/" + id);
     }
 
+    getTaskId(id){
+        return axios.get(BASE_URL + "/" + id);
+    }
+
+    updateTask(todo, id){
+        return axios.put(BASE_URL + "/" + id, todo);
+    }
 
 }
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default new TasKServices();      
